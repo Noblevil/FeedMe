@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-19 19:51:39 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.feedme.entity.User" table="user" catalog="feedme" optimistic-lock="version">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="userAccount" type="string">
+            <column name="user_account" length="45" not-null="true" />
+        </property>
+        <property name="userPassword" type="string">
+            <column name="user_password" length="45" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="user_name" length="45" not-null="true" />
+        </property>
+        <property name="userHead" type="string">
+            <column name="user_head" length="150" not-null="true" />
+        </property>
+        <property name="userCreateTime" type="timestamp">
+            <column name="user_create_time" length="19" not-null="true" />
+        </property>
+        <property name="userPoint" type="int">
+            <column name="user_point" not-null="true" />
+        </property>
+        <set name="memories" table="memory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.feedme.entity.Memory" />
+        </set>
+        <set name="replies" table="reply" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.feedme.entity.Reply" />
+        </set>
+        <set name="discusses" table="discuss" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.feedme.entity.Discuss" />
+        </set>
+        <set name="pets" table="pet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.feedme.entity.Pet" />
+        </set>
+    </class>
+</hibernate-mapping>

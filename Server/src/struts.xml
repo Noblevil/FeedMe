@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.custon.i18n.resources" value="globalMessages" /> <!--国际化--> 
+	<constant name="struts.i18n.encoding" value="utf-8" /><!--指定Web应用的默认编码集-->
+	<constant name="struts.multipart.saveDir" value="/image" /> <!--该属性指定上传文件的临时保存路径,该属性的默认值是javax.servlet.context.tempdir. --> 
+	<constant name="struts.multipart.maxSize" value="10000000" /><!--该属性指定Struts 2文件上传中整个请求内容允许的最大字节数. --> 
+	
+	<package name="default" extends="struts-default">
+	
+	<action name="register" class="com.feedme.action.RegisterAction" />
+	<action name="login" class="com.feedme.action.LoginAction" /> 
+
+		 	
+	</package>
+</struts>    

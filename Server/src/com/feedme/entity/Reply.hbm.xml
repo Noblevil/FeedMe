@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-19 19:51:39 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.feedme.entity.Reply" table="reply" catalog="feedme" optimistic-lock="version">
+        <id name="replyId" type="java.lang.Integer">
+            <column name="reply_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="discuss" class="com.feedme.entity.Discuss" fetch="select">
+            <column name="discuss_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.feedme.entity.User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="replyContent" type="string">
+            <column name="reply_content" length="65535" not-null="true" />
+        </property>
+        <property name="replyCreateTime" type="timestamp">
+            <column name="reply_create_time" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,126 @@
+【Usay-interface】
+
+所有json均返回result， result为1成功，0表示操作错误，2为常见错误 3为其他
+
+
+userId：
+userAccount：用户账号
+userPassword：用户密码
+userName：用户昵称
+userHead：用户头像
+userCreateTime：用户创建时间
+userPoint:用户积分
+
+result：1，成功
+result：0，失败
+result：-1，网络错误
+result：2，其他错误，具体不同接口原因不同
+result：3，撤销操作（一般）
+result：1001，userAccount不符合规范
+result：1002，userName不符合规范
+result：1003，userPassword不符合规范
+result：1004，userPhone不符合规范
+result：1005，userQq不符合规范
+result：1006，userWechat不符合规范
+
+【entity】
+
+//user.class
+
+	private Integer userId;
+	private String userAccount;
+	private String userPassword;
+	private String userName;
+	private String userHead;
+	private Date userCreateTime;
+	private int userPoint;
+	private Set memories = new HashSet(0);
+	private Set pets = new HashSet(0);
+
+//word.class
+
+	private Integer wordId;
+	private String wordSpell;
+	private String wordSpeech;
+	private String wordMean;
+	private String wordPhoneticSymbol;
+	private String wordClassifyOfBook;
+	private byte wordClassifyUnit;
+	private String wordPicture;
+	private String wordExample1;
+	private String wordExample2;
+	private String wordMeanOfExample1;
+	private String wordMeanOfExample2;
+	private Set memories = new HashSet(0);
+
+//pet.class
+
+	private Integer petId;
+	private User user;
+	private int petHunger;
+	private int petClean;
+	private int petMood;
+	private int petHealth;
+
+//memory.class
+
+	private Integer memoryId;
+	private User user;
+	private Word word;
+	private int memoryProficiency;
+	private int memoryDifficulty;
+	private int memoryImportant;
+	private int memoryAccuracy;
+
+//discuss.class
+
+	private Integer discussId;
+	private User user;
+	private String discussTitle;
+	private String discussContent;
+	private Date discussCreateTime;
+	private int discussHot;
+	private Set replies = new HashSet(0);
+
+//reply.class
+
+	private Integer replyId;
+	private Discuss discuss;
+	private User user;
+	private String replyContent;
+	private Date replyCreateTime;
+
+
+【注册接口】
+URL: http://121.42.195.113/feedme/register.action
+Parameter: userAccount, userPassword
+
+Request Example:
+http://121.42.195.113/feedme/register.action?userAccount=18819479314&userPassword=123456
+
+Response Example: 
+{	
+	"result":1,
+	"userId":1
+} 
+
+
+
+【登录接口】
+URL: http://121.42.195.113/feedme/login.action
+Parameter: userAccount, userPassword
+
+Request Example:
+http://121.42.195.113/feedme/register.action?userAccount=18819479314&userPassword=123456
+
+Response Example: 
+{	
+	"result":1,
+	"userId":1,
+	"userAccount":"18819479314",
+	"userName":"18819479314",
+	"userHead":"http://121.42.195.113/feedme/images/default.png",
+	"userCreateTime":"Jan 19, 2016 1:47:49 PM",
+	"userPoint":0
+} 
+

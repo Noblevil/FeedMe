@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-19 19:51:39 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.feedme.entity.Pet" table="pet" catalog="feedme" optimistic-lock="version">
+        <id name="petId" type="java.lang.Integer">
+            <column name="pet_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="com.feedme.entity.User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="petHunger" type="int">
+            <column name="pet_hunger" not-null="true" />
+        </property>
+        <property name="petClean" type="int">
+            <column name="pet_clean" not-null="true" />
+        </property>
+        <property name="petMood" type="int">
+            <column name="pet_mood" not-null="true" />
+        </property>
+        <property name="petHealth" type="int">
+            <column name="pet_health" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

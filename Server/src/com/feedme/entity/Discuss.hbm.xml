@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-19 19:51:39 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.feedme.entity.Discuss" table="discuss" catalog="feedme" optimistic-lock="version">
+        <id name="discussId" type="java.lang.Integer">
+            <column name="discuss_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="com.feedme.entity.User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="discussTitle" type="string">
+            <column name="discuss_title" length="45" not-null="true" />
+        </property>
+        <property name="discussContent" type="string">
+            <column name="discuss_content" length="65535" not-null="true" />
+        </property>
+        <property name="discussCreateTime" type="timestamp">
+            <column name="discuss_create_time" length="19" not-null="true" />
+        </property>
+        <property name="discussHot" type="int">
+            <column name="discuss_hot" not-null="true" />
+        </property>
+        <set name="replies" table="reply" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="discuss_id" not-null="true" />
+            </key>
+            <one-to-many class="com.feedme.entity.Reply" />
+        </set>
+    </class>
+</hibernate-mapping>

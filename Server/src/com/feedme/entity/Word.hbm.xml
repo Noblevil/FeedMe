@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-19 19:51:39 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.feedme.entity.Word" table="word" catalog="feedme" optimistic-lock="version">
+        <id name="wordId" type="java.lang.Integer">
+            <column name="word_id" />
+            <generator class="identity" />
+        </id>
+        <property name="wordSpell" type="string">
+            <column name="word_spell" length="45" not-null="true" />
+        </property>
+        <property name="wordSpeech" type="string">
+            <column name="word_speech" length="45" not-null="true" />
+        </property>
+        <property name="wordMean" type="string">
+            <column name="word_mean" length="45" not-null="true" />
+        </property>
+        <property name="wordPhoneticSymbol" type="string">
+            <column name="word_phonetic_symbol" length="45" not-null="true" />
+        </property>
+        <property name="wordClassifyOfBook" type="string">
+            <column name="word_classify_of_book" length="45" not-null="true" />
+        </property>
+        <property name="wordClassifyUnit" type="byte">
+            <column name="word_classify_unit" not-null="true" />
+        </property>
+        <property name="wordPicture" type="string">
+            <column name="word_picture" length="100" not-null="true" />
+        </property>
+        <property name="wordExample1" type="string">
+            <column name="word_example1" length="150" not-null="true" />
+        </property>
+        <property name="wordExample2" type="string">
+            <column name="word_example2" length="150" not-null="true" />
+        </property>
+        <property name="wordMeanOfExample1" type="string">
+            <column name="word_mean_of_example1" length="150" not-null="true" />
+        </property>
+        <property name="wordMeanOfExample2" type="string">
+            <column name="word_mean_of_example2" length="150" not-null="true" />
+        </property>
+        <set name="memories" table="memory" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="word_id" not-null="true" />
+            </key>
+            <one-to-many class="com.feedme.entity.Memory" />
+        </set>
+    </class>
+</hibernate-mapping>
