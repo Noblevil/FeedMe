@@ -111,7 +111,7 @@ URL: http://121.42.195.113/feedme/login.action
 Parameter: userAccount, userPassword
 
 Request Example:
-http://121.42.195.113/feedme/register.action?userAccount=18819479314&userPassword=123456
+http://121.42.195.113/feedme/login.action?userAccount=18819479314&userPassword=123456
 
 Response Example: 
 {	
